@@ -1,0 +1,19 @@
+{
+  "name": "quadratic-equation-solver",
+  "version": "1.0.0",
+  "description": "software development methodologies and technologies, lab 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YaroslavEls/quadratic-equation-solver.git"
+  },
+  "author": "Yaroslav Tereshchenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YaroslavEls/quadratic-equation-solver/issues"
+  },
+  "homepage": "https://github.com/YaroslavEls/quadratic-equation-solver#readme"
+}
