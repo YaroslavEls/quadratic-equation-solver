@@ -2,6 +2,7 @@
 
 const readline = require('readline');
 const util = require('util');
+const fs = require("fs").promises;
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -44,6 +45,18 @@ async function interactive() {
     solve(nums);
 }
 
+async function nonInteractive() {
+    const regExp = /[0-9]{1,7}(?:\.[0-9]{1,2})?\s[0-9]{1,7}(?:\.[0-9]{1,2})?\s[0-9]{1,7}(?:\.[0-9]{1,2})?\n/;
+    const path = await question('Enter file path: ');
+    try {
+        const p = await fs.readFile(path, 'utf8');
+        const nums = p.match(regExp)[0].slice(0, -1).split(' ');
+        solve(nums);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 async function start() {
     const res = await question('Start in Interactive or Non-Interactive mode? [1/2]: ');
     switch (res) {
@@ -51,6 +64,7 @@ async function start() {
             await interactive();
             process.exit();
         case '2':
+            await nonInteractive();
             process.exit();
         default:
             await start();
