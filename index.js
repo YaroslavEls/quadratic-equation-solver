@@ -20,8 +20,7 @@ async function ask(num) {
     return res;
 }
 
-function solve(arr) {
-    const [a, b, c] = arr;
+function solve(a, b, c) {
     console.log(`Equation is: ${a} * x^2 + ${b} * x + ${c} = 0`);
     const D = b * b - 4 * a * c;
     if (a == 0 || D < 0) {
@@ -42,7 +41,7 @@ async function interactive() {
     for (let i = 0; i < vars.length; i++) {
         nums.push(await ask(vars[i]));
     }
-    solve(nums);
+    solve(...nums);
 }
 
 async function nonInteractive() {
@@ -51,7 +50,7 @@ async function nonInteractive() {
     try {
         const p = await fs.readFile(path, 'utf8');
         const nums = p.match(regExp)[0].slice(0, -1).split(' ');
-        solve(nums);
+        solve(...nums);
     } catch (error) {
         console.log(error);
     }
@@ -71,4 +70,6 @@ async function start() {
     }
 }
 
-start();
+(async () => {
+    await start();
+})();
